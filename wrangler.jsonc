@@ -1,0 +1,12 @@
+{
+  "name": "empire-wars",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-01",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "empire-wars",
+      "database_id": "8736f14b-b4cb-4c43-b481-e21fc5e648ce"
+    }
+  ]
+}
