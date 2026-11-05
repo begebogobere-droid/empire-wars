@@ -108,7 +108,7 @@ var BUILDINGS = [
   { key: "refinery", name: "پالایشگاه", emoji: "\uD83D\uDEE2", desc: "نفت تولید می‌کند.", minCentral: 1, maxLevel: 10, cost: { gold: 400, iron: 150 }, time: 60 },
   { key: "power", name: "نیروگاه", emoji: "⚡", desc: "انرژی تولید می‌کند؛ نگهداری ارتش از انرژی کم می‌شود.", minCentral: 1, maxLevel: 10, cost: { gold: 350, iron: 120 }, time: 50 },
   { key: "warehouse", name: "انبار", emoji: "\uD83D\uDCE6", desc: "ظرفیت ذخیره منابع را بالا می‌برد.", minCentral: 1, maxLevel: 10, cost: { gold: 300, iron: 150 }, time: 45 },
-  { key: "steelfactory", name: "کارخانه فولاد", emoji: "\uD83C\uDFED", desc: "آهن را به فولاد تبدیل می‌کند (هر ۱ فولاد = ۲ آهن).", minCentral: 2, maxLevel: 10, cost: { gold: 700, iron: 300 }, time: 80 },
+  { key: "steelfactory", name: "کارخانه فولاد", emoji: "\uD83C\uDFED", desc: "آهن را به فولاد تبدیل می‌کند (هر 1 فولاد = 2 آهن).", minCentral: 2, maxLevel: 10, cost: { gold: 700, iron: 300 }, time: 80 },
   { key: "research", name: "مرکز تحقیقات", emoji: "\uD83D\uDD2C", desc: "فناوری تولید می‌کند و تحقیقات جدید را باز می‌کند.", minCentral: 2, maxLevel: 10, cost: { gold: 800, iron: 300, steel: 100 }, time: 90 },
   { key: "barracks", name: "پادگان", emoji: "\uD83E\uDE96", desc: "نگهداری نیروهای زمینی و واحدهای پشتیبانی.", minCentral: 1, maxLevel: 10, cost: { gold: 500, iron: 200 }, time: 60 },
   { key: "airfield", name: "فرودگاه", emoji: "✈️", desc: "خرید و نگهداری جنگنده‌ها.", minCentral: 2, maxLevel: 10, cost: { gold: 1200, iron: 400, steel: 200 }, time: 100 },
@@ -131,11 +131,11 @@ var CAP_PER_LEVEL = { airfield: 10, barracks: 40, tankfactory: 8, defense: 10 };
 
 // src/data/techs.ts
 var TECHS = [
-  { key: "aero", name: "فناوری هوانوردی", emoji: "\uD83D\uDEE9", desc: "نسل‌های جدید جنگنده را باز می‌کند و قدرت جنگنده‌ها را ۴٪ در هر سطح بالا می‌برد.", max: 5 },
-  { key: "armor", name: "فناوری زرهی", emoji: "\uD83E\uDE96", desc: "نسل‌های جدید تانک و پیاده‌نظام پیشرفته را باز می‌کند؛ قدرت نیروی زمینی +۴٪ در هر سطح.", max: 5 },
-  { key: "airdef", name: "فناوری پدافند", emoji: "\uD83D\uDCE1", desc: "نسل‌های جدید سامانه‌های دفاعی را باز می‌کند؛ قدرت پدافند +۴٪ در هر سطح.", max: 5 },
-  { key: "industry", name: "فناوری صنعتی", emoji: "\uD83C\uDFED", desc: "تولید همه منابع را ۵٪ در هر سطح افزایش می‌دهد.", max: 5 },
-  { key: "logistics", name: "فناوری لجستیک", emoji: "\uD83D\uDE9A", desc: "واحدهای پشتیبانی را باز می‌کند و ظرفیت انبار را ۱۰٪ در هر سطح بالا می‌برد.", max: 5 }
+  { key: "aero", name: "فناوری هوانوردی", emoji: "\uD83D\uDEE9", desc: "نسل‌های جدید جنگنده را باز می‌کند و قدرت جنگنده‌ها را 4% در هر سطح بالا می‌برد.", max: 5 },
+  { key: "armor", name: "فناوری زرهی", emoji: "\uD83E\uDE96", desc: "نسل‌های جدید تانک و پیاده‌نظام پیشرفته را باز می‌کند؛ قدرت نیروی زمینی +4% در هر سطح.", max: 5 },
+  { key: "airdef", name: "فناوری پدافند", emoji: "\uD83D\uDCE1", desc: "نسل‌های جدید سامانه‌های دفاعی را باز می‌کند؛ قدرت پدافند +4% در هر سطح.", max: 5 },
+  { key: "industry", name: "فناوری صنعتی", emoji: "\uD83C\uDFED", desc: "تولید همه منابع را 5% در هر سطح افزایش می‌دهد.", max: 5 },
+  { key: "logistics", name: "فناوری لجستیک", emoji: "\uD83D\uDE9A", desc: "واحدهای پشتیبانی را باز می‌کند و ظرفیت انبار را 10% در هر سطح بالا می‌برد.", max: 5 }
 ];
 var T = Object.fromEntries(TECHS.map((t) => [t.key, t]));
 function tCost(toLevel, cfg) {
@@ -169,7 +169,7 @@ var CFG_META = {
   build_time_mult: { name: "ضریب زمان ساخت / ارتقا / تحقیق", min: 0.01, max: 20 },
   build_cost_mult: { name: "ضریب هزینه ساختمان و تحقیق", min: 0.1, max: 20 },
   price_mult: { name: "ضریب قیمت تجهیزات نظامی", min: 0.1, max: 20 },
-  loot_pct: { name: "درصد غنیمت نبرد (۰٫۰۱ تا ۰٫۵)", min: 0.01, max: 0.5 },
+  loot_pct: { name: "درصد غنیمت نبرد (0.01 تا 0.5)", min: 0.01, max: 0.5 },
   protect_hours: { name: "ساعت محافظت تازه‌واردها", min: 0, max: 168 },
   attack_cooldown: { name: "فاصله بین حمله‌ها (ثانیه)", min: 0, max: 86400 },
   shield_seconds: { name: "سپر بعد از غارت (ثانیه)", min: 0, max: 86400 },
@@ -275,9 +275,9 @@ var sup = [
   { key: "s3", name: "نیروهای شناسایی", emoji: "\uD83D\uDCE1", branch: "sup", group: "sup", gen: 3, cost: { gold: 900, steel: 160, oil: 60 }, atk: 0, def: 0, slots: 3, upkeep: 2, building: "barracks", bLevel: 5, tech: { key: "logistics", level: 2 }, capBuilding: "barracks" }
 ];
 var SUPPORT_INFO = {
-  s1: "+۰٫۴٪ قدرت حمله به ازای هر واحد (سقف ۲۰٪)",
-  s2: "−۰٫۵٪ تلفات به ازای هر واحد (سقف ۳۰٪)",
-  s3: "+۰٫۶٪ قدرت دفاع به ازای هر واحد (سقف ۲۵٪)"
+  s1: "+0.4% قدرت حمله به ازای هر واحد (سقف 20%)",
+  s2: "−0.5% تلفات به ازای هر واحد (سقف 30%)",
+  s3: "+0.6% قدرت دفاع به ازای هر واحد (سقف 25%)"
 };
 var UNITS = [
   ...fromRows(air, "air", "air", "✈️", "airfield", "aero"),
@@ -293,8 +293,9 @@ function unitsOfBranch(br) {
 var GROUP_TECH = { air: "aero", inf: "armor", tank: "armor", def: "airdef" };
 
 // src/telegram/keyboards.ts
-var btn = (text, data) => ({ text, callback_data: data });
-var homeRow = () => [btn("\uD83C\uDFE0 منوی اصلی", "h")];
+var btn = (text, data, style = "primary") => ({ text, callback_data: data, style });
+var homeRow = () => [btn("🏠 منوی اصلی", "h")];
+var navRow = (to) => [btn("↩️ بازگشت", to), btn("🏠 منو", "h")];
 var backRow = (to, label = "↩️ بازگشت") => [btn(label, to)];
 function chunk(items, n = 2) {
   const out = [];
@@ -304,15 +305,12 @@ function chunk(items, n = 2) {
 }
 function mainMenu(isAdmin) {
   const rows = [
-    [btn("\uD83C\uDFF0 امپراتوری من", "emp"), btn("\uD83C\uDFD7 ساختمان‌ها", "bl")],
-    [btn("⚔️ ارتش من", "ar"), btn("✈️ نیروی هوایی", "br:air")],
-    [btn("\uD83E\uDE96 نیروی زمینی", "br:gnd"), btn("\uD83D\uDEE1 پدافند", "br:def")],
-    [btn("\uD83D\uDD2C تحقیقات", "rs"), btn("⛏ منابع و اقتصاد", "ec")],
-    [btn("\uD83C\uDF0D جهان و بازیکنان", "wd"), btn("⚔️ نبردها", "bt")],
-    [btn("\uD83C\uDFC6 رتبه‌بندی", "rk"), btn("⚙️ تنظیمات", "st")]
+    [btn("🏰 امپراتوری", "g:emp"), btn("⚔️ ارتش", "ar")],
+    [btn("🧪 تحقیقات", "rs"), btn("🌍 جهان", "g:wd")],
+    [btn("⚙️ تنظیمات", "st"), btn("📖 راهنما", "hp")]
   ];
   if (isAdmin)
-    rows.push([btn("\uD83D\uDEE0 پنل ادمین", "ad")]);
+    rows.push([btn("🛠 پنل ادمین", "ad")]);
   return rows;
 }
 
@@ -320,14 +318,16 @@ function mainMenu(isAdmin) {
 var RES_KEYS = ["gold", "oil", "iron", "steel", "energy", "tech"];
 
 // src/util.ts
-var LINE = "━━━━━━━━━━━━";
-var FA = "۰۱۲۳۴۵۶۷۸۹";
-var fa = (v) => String(v).replace(/\d/g, (d) => FA[+d]);
+var LINE = "━━━━━━━━━━━━━━";
+var H = (t) => `╭─ ✦ ${t} ✦ ─╮`;
+var BOLD_DIGITS = ["𝟎", "𝟏", "𝟐", "𝟑", "𝟒", "𝟓", "𝟔", "𝟕", "𝟖", "𝟗"];
+var boldDigits = (s) => typeof s === "string" ? s.replace(/\d/g, (d) => BOLD_DIGITS[+d]) : s;
+var fa = (v) => String(v);
 var num = (v) => {
   const n = Math.floor(v);
-  return fa(String(Math.abs(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "٬")).replace(/^/, n < 0 ? "-" : "");
+  return (n < 0 ? "-" : "") + String(Math.abs(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
-var pct = (v, digits = 0) => fa(v.toFixed(digits).replace(".", "٫")) + "٪";
+var pct = (v, digits = 0) => v.toFixed(digits) + "%";
 function dur(sec) {
   sec = Math.max(0, Math.ceil(sec));
   const d = Math.floor(sec / 86400);
@@ -631,62 +631,56 @@ function screenArmy(st) {
   const a = armyStats(st);
   const g = a.byGroup;
   const text = [
-    "⚔️ ارتش من",
+    H("ارتش"),
     LINE,
-    `\uD83D\uDD25 قدرت حمله: ${num(a.atk)}`,
-    `\uD83D\uDEE1 قدرت دفاع: ${num(a.def)}`,
-    `⚡ هزینه نگهداری: ${num(a.upkeep)} انرژی در ساعت`,
+    `🔥 قدرت حمله : ${num(a.atk)}`,
+    `🛡 قدرت دفاع : ${num(a.def)}`,
+    `⚡ نگهداری : ${num(a.upkeep)} انرژی در ساعت`,
     a.shortage ? "⚠️ انرژی تمام شده؛ قدرت ارتش کاهش یافته است!" : "",
     LINE,
-    `✈️ جنگنده‌ها: ${num(g.air)}`,
-    `\uD83D\uDE9C تانک‌ها: ${num(g.tank)}`,
-    `\uD83E\uDE96 پیاده‌نظام: ${num(g.inf)}`,
-    `\uD83D\uDEE1 سامانه‌های دفاعی: ${num(g.def)}`,
-    `\uD83D\uDE9A واحدهای پشتیبانی: ${num(g.sup)}`,
+    `✈️ جنگنده‌ها : ${num(g.air)}`,
+    `🚜 تانک‌ها : ${num(g.tank)}`,
+    `🪖 پیاده‌نظام : ${num(g.inf)}`,
+    `🛡 پدافند : ${num(g.def)}`,
+    `🚚 پشتیبانی : ${num(g.sup)}`,
     LINE,
-    `\uD83D\uDE9A پشتیبانی: حمله ${pct(a.atkBonus * 100, 1)} | دفاع ${pct(a.defBonus * 100, 1)} | کاهش تلفات ${pct(a.lossReduction * 100, 1)}`
-  ].filter((x) => x !== "").join(`
-`);
+    `🚚 پشتیبانی ➜ حمله +${pct(a.atkBonus * 100, 1)} | دفاع +${pct(a.defBonus * 100, 1)} | تلفات −${pct(a.lossReduction * 100, 1)}`
+  ].filter((x) => x !== "").join("\n");
   return {
     text,
     kb: [
-      [btn("✈️ نیروی هوایی", "br:air"), btn("\uD83E\uDE96 نیروی زمینی", "br:gnd")],
-      [btn("\uD83D\uDEE1 نیروی دفاعی", "br:def"), btn("\uD83D\uDE9A نیروی پشتیبانی", "br:sup")],
+      [btn("✈️ نیروی هوایی", "br:air"), btn("🪖 نیروی زمینی", "br:gnd")],
+      [btn("🛡 پدافند", "br:def"), btn("🚚 پشتیبانی", "br:sup")],
       homeRow()
     ]
   };
 }
 function screenBranch(st, br) {
   const info = BRANCHES[br];
-  const lines = [`${info.emoji} ${info.name}`, LINE];
+  const lines = [H(info.name), LINE];
   const kb = [];
   for (const bk of info.buildings) {
     const lv = bLvl(st, bk);
     const ci = capInfo(st, bk);
-    lines.push(`${B[bk].emoji} ${B[bk].name}`);
     if (lv === 0) {
-      lines.push("وضعیت: ساخته نشده ❌");
+      lines.push(`${B[bk].emoji} ${B[bk].name} : ❌ ساخته نشده`);
     } else {
-      lines.push(`سطح ساختمان: ${fa(lv)}`);
-      lines.push(`ظرفیت: ${fa(ci.used)} / ${fa(ci.total)}`);
-      lines.push("وضعیت: فعال ✅");
+      lines.push(`${B[bk].emoji} ${B[bk].name} : سطح ${lv}  |  📦 ${ci.used}/${ci.total}`);
     }
-    lines.push("");
   }
   const mine = unitsOfBranch(br).reduce((s, u) => s + unitQty(st, u.key), 0);
-  lines.push(`تعداد واحدها: ${num(mine)}`);
-  lines.push(LINE);
-  kb.push([btn(info.viewLabel, `bv:${br}`), btn("\uD83C\uDFED خرید تجهیزات", `bs:${br}`)]);
+  lines.push(LINE, `🎖 تعداد واحدها : ${num(mine)}`);
+  kb.push([btn(info.viewLabel, `bv:${br}`), btn("🏭 تجهیزات", `bs:${br}`)]);
   for (const bk of info.buildings) {
-    kb.push([btn(bLvl(st, bk) === 0 ? `\uD83C\uDFD7 ساخت ${B[bk].name}` : `⬆️ ارتقای ${B[bk].name}`, `bd:${bk}`)]);
+    const none = bLvl(st, bk) === 0;
+    kb.push([btn(none ? `🏗 ساخت ${B[bk].name}` : `⬆️ ارتقای ${B[bk].name}`, `bd:${bk}`, "success")]);
   }
-  kb.push([btn("↩️ بازگشت", "ar"), btn("\uD83C\uDFE0 منو", "h")]);
-  return { text: lines.join(`
-`), kb };
+  kb.push(navRow("ar"));
+  return { text: lines.join("\n"), kb };
 }
 function screenUnitsView(st, br) {
   const info = BRANCHES[br];
-  const lines = [`${info.emoji} واحدهای ${info.name}`, LINE];
+  const lines = [H(`واحدهای ${info.name}`), LINE];
   let any = false;
   for (const u of unitsOfBranch(br)) {
     const q = unitQty(st, u.key);
@@ -694,60 +688,58 @@ function screenUnitsView(st, br) {
       continue;
     any = true;
     const m = techMult(st, u.group);
-    lines.push(`${u.emoji} ${u.name} (نسل ${fa(u.gen)}) × ${num(q)}`);
+    lines.push(`${u.emoji} ${u.name} (نسل ${u.gen}) × ${num(q)}`);
     if (u.group === "sup")
       lines.push(`   ${SUPPORT_INFO[u.key]}`);
     else
-      lines.push(`   \uD83D\uDD25 ${num(q * u.atk * m)}  \uD83D\uDEE1 ${num(q * u.def * m)}`);
+      lines.push(`   🔥 ${num(q * u.atk * m)}   🛡 ${num(q * u.def * m)}`);
   }
   if (!any)
-    lines.push("هنوز واحدی نداری. از «خرید تجهیزات» شروع کن.");
-  return { text: lines.join(`
-`), kb: [[btn("\uD83C\uDFED خرید تجهیزات", `bs:${br}`)], backRow(`br:${br}`)] };
+    lines.push("هنوز واحدی نداری. از «تجهیزات» شروع کن.");
+  return { text: lines.join("\n"), kb: [[btn("🏭 تجهیزات", `bs:${br}`, "success")], navRow(`br:${br}`)] };
 }
 function screenShop(st, br) {
   const info = BRANCHES[br];
-  const lines = [`\uD83C\uDFED خرید تجهیزات — ${info.name}`, LINE];
+  const lines = [H(`تجهیزات ${info.name}`), LINE];
   const btns = [];
   for (const u of unitsOfBranch(br)) {
     const ok = unitReqs(st, u).ok;
-    lines.push(`${ok ? "✅" : "\uD83D\uDD12"} ${u.emoji} ${u.name} (نسل ${fa(u.gen)})`);
-    lines.push(u.group === "sup" ? `   ${SUPPORT_INFO[u.key]}` : `   \uD83D\uDD25${num(u.atk)} \uD83D\uDEE1${num(u.def)} | \uD83D\uDCE6${fa(u.slots)}`);
+    lines.push(`${ok ? "✅" : "🔒"} ${u.emoji} ${u.name} (نسل ${u.gen})`);
+    lines.push(u.group === "sup" ? `   ${SUPPORT_INFO[u.key]}` : `   🔥 ${num(u.atk)}  🛡 ${num(u.def)}  📦 ${u.slots}`);
     lines.push(`   ${costInline(unitCost(u, st, 1))}`);
-    btns.push(btn(`${ok ? "" : "\uD83D\uDD12 "}${u.name}`, `un:${u.key}`));
+    btns.push(btn(`${ok ? "" : "🔒 "}${u.name}`, `un:${u.key}`));
   }
-  lines.push(LINE, "روی هر تجهیزات بزن تا جزئیات و خرید را ببینی.");
-  return { text: lines.join(`
-`), kb: [...chunk(btns, 2), backRow(`br:${br}`)] };
+  lines.push(LINE, "روی هر مورد بزن تا جزئیات و خرید را ببینی.");
+  return { text: lines.join("\n"), kb: [...chunk(btns, 2), navRow(`br:${br}`)] };
 }
 function screenUnit(st, key) {
   const u = U[key];
   const rq = unitReqs(st, u);
   const ci = capInfo(st, u.capBuilding);
   const lines = [
-    `${u.emoji} ${u.name} — نسل ${fa(u.gen)}`,
+    H(`${u.emoji} ${u.name}`),
+    `نسل ${u.gen}`,
     LINE,
-    u.group === "sup" ? `\uD83C\uDFAF اثر: ${SUPPORT_INFO[u.key]}` : `\uD83D\uDD25 حمله: ${num(u.atk)}   \uD83D\uDEE1 دفاع: ${num(u.def)}`,
-    `\uD83D\uDCE6 ظرفیت مصرفی: ${fa(u.slots)} در ${B[u.capBuilding].name}`,
-    `⚡ نگهداری: ${fa(u.upkeep)} انرژی در ساعت`,
+    u.group === "sup" ? `🎯 اثر : ${SUPPORT_INFO[u.key]}` : `🔥 حمله : ${num(u.atk)}   🛡 دفاع : ${num(u.def)}`,
+    `📦 ظرفیت : ${u.slots} در ${B[u.capBuilding].name}`,
+    `⚡ نگهداری : ${u.upkeep} انرژی در ساعت`,
     LINE,
-    "\uD83D\uDCB5 هزینه هر واحد:",
+    "💵 هزینه هر واحد",
     costLines(unitCost(u, st, 1), st),
     LINE,
-    "\uD83D\uDCCC شرایط:",
+    "📌 شرایط",
     ...rq.lines,
     LINE,
-    `تعداد فعلی: ${num(unitQty(st, key))}`,
-    `ظرفیت آزاد: ${fa(Math.max(0, ci.total - ci.used))} از ${fa(ci.total)}`
+    `🎖 موجودی : ${num(unitQty(st, key))}`,
+    `📦 ظرفیت آزاد : ${Math.max(0, ci.total - ci.used)} از ${ci.total}`
   ];
   const kb = [];
   if (rq.ok) {
-    kb.push([btn("خرید ×۱", `ub:${key}:1`), btn("خرید ×۵", `ub:${key}:5`), btn("خرید ×۱۰", `ub:${key}:10`)]);
-    kb.push([btn(`خرید حداکثر (${num(maxBuy(st, u))})`, `ub:${key}:m`)]);
+    kb.push([btn("خرید ×1", `ub:${key}:1`, "success"), btn("خرید ×5", `ub:${key}:5`, "success"), btn("خرید ×10", `ub:${key}:10`, "success")]);
+    kb.push([btn(`خرید حداکثر (${num(maxBuy(st, u))})`, `ub:${key}:m`, "success")]);
   }
-  kb.push(backRow(`bs:${u.branch}`));
-  return { text: lines.join(`
-`), kb };
+  kb.push(navRow(`bs:${u.branch}`));
+  return { text: lines.join("\n"), kb };
 }
 
 // src/db/state.ts
@@ -833,6 +825,13 @@ async function ensurePlayer(ctx, user) {
 
 // src/telegram/api.ts
 async function tg(env, method, body) {
+  if (body && (method === "sendMessage" || method === "editMessageText" || method === "answerCallbackQuery")) {
+    body = { ...body };
+    if (typeof body.text === "string")
+      body.text = boldDigits(body.text);
+    if (body.reply_markup && body.reply_markup.inline_keyboard)
+      body.reply_markup = { ...body.reply_markup, inline_keyboard: body.reply_markup.inline_keyboard.map((row) => row.map((b) => ({ ...b, text: boldDigits(b.text) }))) };
+  }
   try {
     const res = await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/${method}`, {
       method: "POST",
@@ -935,7 +934,7 @@ async function screenAdminStats(ctx) {
     "\uD83D\uDCCA وضعیت کلی بازی",
     LINE,
     `\uD83D\uDC65 بازیکنان: ${num(p.n)} (مسدود: ${num(p.banned || 0)})`,
-    `\uD83D\uDFE2 فعال در ۲۴ ساعت اخیر: ${num(b.results[0].n)}`,
+    `\uD83D\uDFE2 فعال در 24 ساعت اخیر: ${num(b.results[0].n)}`,
     `⚔️ کل نبردها: ${num(c.results[0].n)} | امروز: ${num(d.results[0].n)}`,
     LINE,
     "مجموع منابع بازیکنان:",
@@ -1224,42 +1223,42 @@ function reportScreen(b, viewer, backTo) {
   const isAtt = viewer === b.attacker_id;
   const won = isAtt ? b.winner === 1 : b.winner === 0;
   const lines = [
-    `\uD83D\uDCDC گزارش نبرد #${fa(b.id)}`,
+    H(`گزارش نبرد #${b.id}`),
     timeFa(b.at),
     LINE,
-    `⚔️ مهاجم: ${clip(b.attacker_name, 22)}${isAtt ? " (شما)" : ""}`,
-    `\uD83D\uDEE1 مدافع: ${clip(b.defender_name, 22)}${!isAtt ? " (شما)" : ""}`,
-    `\uD83D\uDD25 قدرت حمله: ${num(b.atk_power)}   \uD83D\uDEE1 قدرت دفاع: ${num(b.def_power)}`,
+    won ? "🏆 نتیجه : پیروزی شما" : "💥 نتیجه : شکست شما",
     LINE,
-    won ? "\uD83C\uDFC6 نتیجه: پیروزی شما" : "\uD83D\uDCA5 نتیجه: شکست شما",
+    `⚔️ مهاجم : ${clip(b.attacker_name, 22)}${isAtt ? " (شما)" : ""}`,
+    `🛡 مدافع : ${clip(b.defender_name, 22)}${!isAtt ? " (شما)" : ""}`,
+    `🔥 قدرت حمله : ${num(b.atk_power)}`,
+    `🛡 قدرت دفاع : ${num(b.def_power)}`,
     LINE,
-    `تلفات مهاجم: ${lossText(b.a_loss)}`,
-    `تلفات مدافع: ${lossText(b.d_loss)}`,
-    `\uD83C\uDF81 غنیمت: ${lootText(b.loot)}`
+    `☠️ تلفات مهاجم : ${lossText(b.a_loss)}`,
+    `☠️ تلفات مدافع : ${lossText(b.d_loss)}`,
+    `🎁 غنیمت : ${lootText(b.loot)}`
   ];
-  return { text: lines.join(`
-`), kb: [backRow(backTo, "↩️ فهرست نبردها"), homeRow()] };
+  return { text: lines.join("\n"), kb: [navRow(backTo)] };
 }
 async function screenBattles(ctx, st) {
   const rows = await ctx.db.prepare("SELECT * FROM battles WHERE attacker_id = ?1 OR defender_id = ?1 ORDER BY id DESC LIMIT 8").bind(st.p.id).all();
-  const lines = ["⚔️ نبردها", LINE];
+  const lines = [H("گزارش نبردها"), LINE];
   const kb = [];
   const a = armyStats(st);
   const cd = st.p.last_attack_at + st.cfg.attack_cooldown - ctx.now;
-  lines.push(`\uD83D\uDD25 قدرت حمله: ${num(a.atk)}   ⚡ انرژی هر حمله: ${num(st.cfg.attack_energy)}`);
-  lines.push(cd > 0 ? `⏳ حمله بعدی: ${dur(cd)} دیگر` : "✅ آماده حمله");
+  lines.push(`🔥 قدرت حمله : ${num(a.atk)}`);
+  lines.push(`⚡ انرژی هر حمله : ${num(st.cfg.attack_energy)}`);
+  lines.push(cd > 0 ? `⏳ حمله بعدی : ${dur(cd)}` : "✅ آماده حمله");
   lines.push(LINE);
   if (!rows.results.length)
-    lines.push("هنوز نبردی نداشته‌ای. از «جهان و بازیکنان» هدف انتخاب کن.");
+    lines.push("هنوز نبردی نداشته‌ای. از «بازیکنان و حمله» هدف انتخاب کن.");
   for (const b of rows.results) {
     const isAtt = b.attacker_id === st.p.id;
     const won = isAtt ? b.winner === 1 : b.winner === 0;
     const other = isAtt ? b.defender_name : b.attacker_name;
-    kb.push([btn(`${won ? "\uD83C\uDFC6" : "\uD83D\uDCA5"} ${isAtt ? "حمله به" : "حمله از"} ${clip(other, 16)}`, `rp:${b.id}`)]);
+    kb.push([btn(`${won ? "🏆" : "💥"} ${isAtt ? "حمله به" : "حمله از"} ${clip(other, 16)}`, `rp:${b.id}`)]);
   }
-  kb.push([btn("\uD83C\uDF0D جهان و بازیکنان", "wd")], homeRow());
-  return { text: lines.join(`
-`), kb };
+  kb.push([btn("🎯 بازیکنان و حمله", "wd")], navRow("g:wd"));
+  return { text: lines.join("\n"), kb };
 }
 async function screenReport(ctx, st, id) {
   const b = await ctx.db.prepare("SELECT * FROM battles WHERE id = ? AND (attacker_id = ? OR defender_id = ?)").bind(id, st.p.id, st.p.id).first();
@@ -1270,18 +1269,17 @@ async function screenReport(ctx, st, id) {
 function screenAttackConfirm(att, t) {
   const a = armyStats(att);
   const lines = [
-    `⚔️ حمله به ${clip(t.empire_name, 22)}`,
+    H(`حمله به ${clip(t.empire_name, 22)}`),
     LINE,
-    `\uD83D\uDD25 قدرت حمله شما: ${num(a.atk)}`,
-    `\uD83C\uDFAF قدرت کلی هدف: ${num(t.power)}`,
-    `⚡ هزینه انرژی: ${num(att.cfg.attack_energy)} (موجودی: ${num(att.res.energy)})`,
+    `🔥 قدرت حمله شما : ${num(a.atk)}`,
+    `🎯 قدرت کلی هدف : ${num(t.power)}`,
+    `⚡ هزینه انرژی : ${num(att.cfg.attack_energy)} (موجودی: ${num(att.res.energy)})`,
     LINE,
-    "• نتیجه با ضریب تصادفی کوچک تعیین می‌شود.",
-    "• هر دو طرف مقداری از ارتش را از دست می‌دهند.",
-    "• با حمله، محافظت تازه‌واردی شما پایان می‌یابد."
+    "◆ نتیجه با ضریب تصادفی کوچک تعیین می‌شود.",
+    "◆ هر دو طرف مقداری از ارتش را از دست می‌دهند.",
+    "◆ با حمله، محافظت تازه‌واردی شما پایان می‌یابد."
   ];
-  return { text: lines.join(`
-`), kb: [[btn("⚔️ شروع حمله", `ay:${t.id}`)], backRow(`pf:${t.id}`)] };
+  return { text: lines.join("\n"), kb: [[btn("⚔️ شروع حمله", `ay:${t.id}`, "danger")], [btn("↩️ بازگشت", `pf:${t.id}`)]] };
 }
 
 // src/modules/buildings.ts
@@ -1305,7 +1303,7 @@ function checkUpgrade(st, key) {
   if (cur === 0 && bLvl(st, "central") < def.minCentral)
     return `برای ساخت این ساختمان، ساختمان مرکزی باید سطح ${fa(def.minCentral)} باشد.`;
   if (target > levelCap(st, key))
-    return `سطح ساختمان مرکزی کافی نیست. (حداکثر سطح سایر ساختمان‌ها = ۲ برابر سطح مرکزی)`;
+    return `سطح ساختمان مرکزی کافی نیست. (حداکثر سطح سایر ساختمان‌ها = 2 برابر سطح مرکزی)`;
   if (!canAfford(st, bCost(def, target, st.cfg)))
     return "منابع کافی نیست.";
   return null;
@@ -1338,7 +1336,7 @@ function prodText(st, key, level) {
   if (p)
     out.push(`${RES[p.res].emoji} تولید ${RES[p.res].name}: ${num((p.base + p.per * level) * m)} در ساعت`);
   if (key === "steelfactory")
-    out.push(`\uD83D\uDD29 تبدیل تا ${num(STEEL_PER_LEVEL * level * m)} فولاد در ساعت (هر ۱ فولاد = ۲ آهن)`);
+    out.push(`\uD83D\uDD29 تبدیل تا ${num(STEEL_PER_LEVEL * level * m)} فولاد در ساعت (هر 1 فولاد = 2 آهن)`);
   if (key === "warehouse")
     out.push(`\uD83D\uDCE6 ظرفیت انبار: ${num(Math.round(4000 * Math.pow(1.45, Math.max(1, level) - 1) * (1 + 0.1 * (st.t["logistics"] || 0))))} از هر منبع`);
   if (CAP_PER_LEVEL[key])
@@ -1349,45 +1347,45 @@ function prodText(st, key, level) {
 `);
 }
 function screenBuildings(st, now) {
-  const lines = ["\uD83C\uDFD7 ساختمان‌های امپراتوری", LINE];
   const q = buildingQueue(st);
-  for (const d of BUILDINGS) {
-    const lv = bLvl(st, d.key);
-    const inQ = q && q.key === d.key ? ` ⏳ → ${fa(q.to_level)} (${dur(q.finish_at - now)})` : "";
-    lines.push(`${d.emoji} ${d.name}: ${lv === 0 ? "ساخته نشده" : "سطح " + fa(lv)}${inQ}`);
-  }
-  lines.push(LINE);
-  lines.push(q ? `\uD83C\uDFD7 در حال ساخت: ${B[q.key].name} → سطح ${fa(q.to_level)} (${dur(q.finish_at - now)})` : "\uD83C\uDFD7 صف ساخت خالی است.");
-  const btns = BUILDINGS.map((d) => btn(`${d.emoji} ${d.name}`, `bd:${d.key}`));
-  return { text: lines.join(`
-`), kb: [...chunk(btns, 2), [btn("\uD83D\uDD04 به‌روزرسانی", "bl")], homeRow()] };
+  const ECON = ["central", "mine", "refinery", "power", "warehouse", "steelfactory", "research"];
+  const MIL = ["barracks", "airfield", "tankfactory", "defense"];
+  const row = (k) => {
+    const d = B[k];
+    const lv = bLvl(st, k);
+    const inQ = q && q.key === k ? ` ⏳ ➜ ${q.to_level}` : "";
+    return `${d.emoji} ${d.name} : ${lv === 0 ? "—" : lv}${inQ}`;
+  };
+  const lines = [H("ساختمان‌ها"), LINE, "◆ اقتصاد", ...ECON.map(row), "", "◆ نظامی", ...MIL.map(row), LINE];
+  lines.push(q ? `🏗 در حال ساخت : ${B[q.key].name} ➜ ${q.to_level} (${dur(q.finish_at - now)})` : "🏗 صف ساخت خالی است.");
+  const btns = [...ECON, ...MIL].map((k) => btn(`${B[k].emoji} ${B[k].name}`, `bd:${k}`));
+  return { text: lines.join("\n"), kb: [...chunk(btns, 2), [btn("🔄 به‌روزرسانی", "bl")], navRow("g:emp")] };
 }
 function screenBuilding(st, key, now) {
   const d = B[key];
   const lv = bLvl(st, key);
   const q = buildingQueue(st);
   const target = lv + 1;
-  const lines = [`${d.emoji} ${d.name}`, LINE, d.desc, LINE, `سطح فعلی: ${lv === 0 ? "ساخته نشده" : fa(lv)} (حداکثر ${fa(d.maxLevel)})`];
+  const lines = [H(`${d.emoji} ${d.name}`), d.desc, LINE, `📊 سطح : ${lv === 0 ? "ساخته نشده" : lv} / ${d.maxLevel}`];
   if (lv > 0)
     lines.push(prodText(st, key, lv));
   if (q && q.key === key)
-    lines.push(`⏳ در حال ارتقا به سطح ${fa(q.to_level)} — ${dur(q.finish_at - now)} باقی مانده`);
+    lines.push(`⏳ در حال ارتقا به سطح ${q.to_level} — ${dur(q.finish_at - now)}`);
   if (lv < d.maxLevel) {
-    lines.push(LINE, `⬆️ ${lv === 0 ? "ساخت" : "ارتقا به سطح " + fa(target)}:`);
+    lines.push(LINE, `⬆️ ${lv === 0 ? "ساخت" : "ارتقا به سطح " + target}`);
     lines.push(prodText(st, key, target));
-    lines.push(`⏱ زمان: ${dur(bTime(d, target, st.cfg))}`);
+    lines.push(`⏱ زمان : ${dur(bTime(d, target, st.cfg))}`);
     lines.push(costLines(bCost(d, target, st.cfg), st));
     if (lv === 0 && bLvl(st, "central") < d.minCentral)
-      lines.push(`\uD83D\uDD12 نیاز به ساختمان مرکزی سطح ${fa(d.minCentral)}`);
+      lines.push(`🔒 نیاز به ساختمان مرکزی سطح ${d.minCentral}`);
     else if (target > levelCap(st, key))
-      lines.push("\uD83D\uDD12 سطح ساختمان مرکزی کافی نیست");
+      lines.push("🔒 سطح ساختمان مرکزی کافی نیست");
   }
   const kb = [];
   if (lv < d.maxLevel)
-    kb.push([btn(lv === 0 ? "\uD83C\uDFD7 شروع ساخت" : "⬆️ ارتقا", `bu:${key}`)]);
-  kb.push([btn("\uD83D\uDD04 به‌روزرسانی", `bd:${key}`)], backRow("bl"));
-  return { text: lines.join(`
-`), kb };
+    kb.push([btn(lv === 0 ? "🏗 شروع ساخت" : "⬆️ ارتقا", `bu:${key}`, "success")]);
+  kb.push([btn("🔄 به‌روزرسانی", `bd:${key}`)], navRow("bl"));
+  return { text: lines.join("\n"), kb };
 }
 
 // src/modules/economy.ts
@@ -1395,36 +1393,32 @@ function screenEconomy(st, now) {
   const r = rates(st);
   const cap = storageCap(st);
   const perHour = { gold: r.gold, oil: r.oil, iron: r.iron, steel: 0, energy: r.energy - r.upkeep, tech: r.tech };
-  const lines = ["⛏ منابع و اقتصاد", LINE, `\uD83D\uDCE6 ظرفیت انبار (هر منبع): ${num(cap)} — سطح انبار ${fa(bLvl(st, "warehouse"))}`, LINE];
+  const lines = [H("منابع و اقتصاد"), LINE];
   for (const k of RES_KEYS) {
     let rate = perHour[k];
     let extra = "";
     if (k === "steel") {
       const conv = Math.min(r.steel, st.res.iron / 2);
       rate = conv;
-      extra = r.steel > 0 ? " (از تبدیل آهن)" : " (کارخانه فولاد لازم است)";
+      extra = r.steel > 0 ? "" : " (نیاز به کارخانه فولاد)";
     }
     if (k === "iron" && r.steel > 0)
       rate -= Math.min(r.steel, st.res.iron / 2) * 2;
     const sign = rate > 0 ? "+" : rate < 0 ? "-" : "";
-    lines.push(`${RES[k].emoji} ${RES[k].name}: ${num(st.res[k])}`);
-    lines.push(`   ${bar(st.res[k], cap)} ${sign}${num(Math.abs(rate))}/ساعت${extra}`);
+    lines.push(`${RES[k].emoji} ${RES[k].name} : ${num(st.res[k])}`);
+    lines.push(`   ${bar(st.res[k], cap)} ${sign}${num(Math.abs(rate))}/h${extra}`);
   }
-  lines.push(LINE, `⚡ هزینه نگهداری ارتش: ${num(r.upkeep)} انرژی در ساعت`);
+  lines.push(LINE, `📦 ظرفیت انبار : ${num(cap)} از هر منبع`, `⚡ نگهداری ارتش : ${num(r.upkeep)} انرژی در ساعت`);
   const full = RES_KEYS.filter((k) => st.res[k] >= cap).map((k) => RES[k].name);
   if (full.length)
-    lines.push(`⚠️ انبار پر است: ${full.join("، ")}`);
-  lines.push(LINE, "کاربرد منابع:");
-  for (const k of RES_KEYS)
-    lines.push(`${RES[k].emoji} ${RES[k].name}: ${RES[k].use}`);
+    lines.push(`⚠️ انبار پر است : ${full.join("، ")}`);
   const left = st.p.last_daily + Math.round(st.cfg.daily_cooldown_hours * 3600) - now;
   const kb = [
-    [btn(left > 0 ? `\uD83C\uDF81 پاداش روزانه (${dur(left)})` : "\uD83C\uDF81 دریافت پاداش روزانه", "dl")],
-    [btn("\uD83D\uDD04 به‌روزرسانی", "ec")],
-    homeRow()
+    [left > 0 ? btn(`🎁 پاداش روزانه (${dur(left)})`, "dl") : btn("🎁 دریافت پاداش روزانه", "dl", "success")],
+    [btn("📖 کاربرد منابع", "hp:res"), btn("🔄 به‌روزرسانی", "ec")],
+    navRow("g:emp")
   ];
-  return { text: lines.join(`
-`), kb };
+  return { text: lines.join("\n"), kb };
 }
 async function claimDaily(ctx, st) {
   const cd = Math.round(st.cfg.daily_cooldown_hours * 3600);
@@ -1483,62 +1477,96 @@ async function startResearch(ctx, st, key) {
 }
 function screenResearch(st, now) {
   const lab = bLvl(st, "research");
-  const lines = ["\uD83D\uDD2C مرکز تحقیقات", LINE];
+  const lines = [H("تحقیقات"), LINE];
   if (lab === 0)
     lines.push("⚠️ هنوز مرکز تحقیقات نساخته‌ای. اول آن را بساز.");
   else
-    lines.push(`\uD83C\uDFE2 سطح مرکز تحقیقات: ${fa(lab)}`, `\uD83D\uDD2C تولید فناوری: ${num(rates(st).tech)} در ساعت`, `موجودی فناوری: ${num(st.res.tech)}`);
+    lines.push(`🏢 سطح مرکز تحقیقات : ${lab}`, `🔬 تولید فناوری : ${num(rates(st).tech)}/h`, `📚 موجودی فناوری : ${num(st.res.tech)}`);
   lines.push(LINE);
   const q = researchQueue(st);
   for (const t of TECHS) {
     const lv = tLvl(st, t.key);
     const inQ = q && q.key === t.key ? ` ⏳ (${dur(q.finish_at - now)})` : "";
-    lines.push(`${t.emoji} ${t.name}: ${fa(lv)} / ${fa(t.max)}${inQ}`);
+    lines.push(`${t.emoji} ${t.name} : ${lv}/${t.max}${inQ}`);
   }
-  lines.push(LINE, q ? `\uD83D\uDD2C در حال تحقیق: ${T[q.key].name} → سطح ${fa(q.to_level)} (${dur(q.finish_at - now)})` : "\uD83D\uDD2C صف تحقیق خالی است.");
+  lines.push(LINE, q ? `🔬 در حال تحقیق : ${T[q.key].name} ➜ ${q.to_level} (${dur(q.finish_at - now)})` : "🔬 صف تحقیق خالی است.");
   const btns = TECHS.map((t) => btn(`${t.emoji} ${t.name}`, `rd:${t.key}`));
-  return { text: lines.join(`
-`), kb: [...chunk(btns, 2), [btn("\uD83D\uDD04 به‌روزرسانی", "rs")], homeRow()] };
+  return { text: lines.join("\n"), kb: [...chunk(btns, 2), [btn("🔄 به‌روزرسانی", "rs")], homeRow()] };
 }
 function screenTech(st, key, now) {
   const t = T[key];
   const lv = tLvl(st, key);
   const q = researchQueue(st);
-  const lines = [`${t.emoji} ${t.name}`, LINE, t.desc, LINE, `سطح فعلی: ${fa(lv)} از ${fa(t.max)}`];
+  const lines = [H(`${t.emoji} ${t.name}`), t.desc, LINE, `📊 سطح : ${lv} / ${t.max}`];
   if (q && q.key === key)
-    lines.push(`⏳ در حال تحقیق: سطح ${fa(q.to_level)} — ${dur(q.finish_at - now)} باقی مانده`);
+    lines.push(`⏳ در حال تحقیق : سطح ${q.to_level} — ${dur(q.finish_at - now)}`);
   if (lv < t.max) {
     const n = lv + 1;
-    lines.push(LINE, `\uD83D\uDD2C تحقیق سطح ${fa(n)}:`, `⏱ زمان: ${dur(tTime(n, st.cfg))}`, costLines(tCost(n, st.cfg), st));
+    lines.push(LINE, `🔬 تحقیق سطح ${n}`, `⏱ زمان : ${dur(tTime(n, st.cfg))}`, costLines(tCost(n, st.cfg), st));
     const need = tLabReq(n);
-    lines.push(`${bLvl(st, "research") >= need ? "✅" : "\uD83D\uDD12"} مرکز تحقیقات سطح ${fa(need)} (فعلی: ${fa(bLvl(st, "research"))})`);
+    lines.push(`${bLvl(st, "research") >= need ? "✅" : "🔒"} مرکز تحقیقات سطح ${need} (فعلی: ${bLvl(st, "research")})`);
   }
   const kb = [];
   if (lv < t.max)
-    kb.push([btn("\uD83D\uDD2C شروع تحقیق", `ru:${key}`)]);
-  kb.push([btn("\uD83D\uDD04 به‌روزرسانی", `rd:${key}`)], backRow("rs"));
-  return { text: lines.join(`
-`), kb };
+    kb.push([btn("🔬 شروع تحقیق", `ru:${key}`, "success")]);
+  kb.push([btn("🔄 به‌روزرسانی", `rd:${key}`)], navRow("rs"));
+  return { text: lines.join("\n"), kb };
 }
 
 // src/modules/users.ts
+function screenHub(kind, st, now) {
+  if (kind === "emp") {
+    const q = buildingQueue(st);
+    const text = [
+      H("امپراتوری"),
+      LINE,
+      `🏛 سطح مرکزی : ${bLvl(st, "central")}`,
+      `🔥 قدرت : ${num(st.p.power)}`,
+      q ? `🏗 در حال ساخت : ${B[q.key].name} ➜ ${q.to_level} (${dur(q.finish_at - now)})` : "🏗 صف ساخت : خالی",
+      LINE,
+      "یک بخش را انتخاب کن:"
+    ].join("\n");
+    return { text, kb: [
+      [btn("📊 وضعیت امپراتوری", "emp"), btn("🏗 ساختمان‌ها", "bl")],
+      [btn("⛏ منابع و اقتصاد", "ec")],
+      homeRow()
+    ] };
+  }
+  if (kind === "wd") {
+    const cd = st.p.last_attack_at + st.cfg.attack_cooldown - now;
+    const text = [
+      H("جهان"),
+      LINE,
+      `🔥 قدرت حمله : ${num(armyStats(st).atk)}`,
+      cd > 0 ? `⏳ حمله بعدی : ${dur(cd)}` : "✅ آماده حمله",
+      LINE,
+      "یک بخش را انتخاب کن:"
+    ].join("\n");
+    return { text, kb: [
+      [btn("🎯 بازیکنان و حمله", "wd"), btn("🏆 رتبه‌بندی", "rk")],
+      [btn("📜 گزارش نبردها", "bt")],
+      homeRow()
+    ] };
+  }
+  return screenHome(st, false, now);
+}
 function screenHome(st, isAdmin, now) {
   const q = buildingQueue(st);
   const r = researchQueue(st);
   const lines = [
-    `\uD83C\uDFF0 ${st.p.empire_name}`,
+    H(st.p.empire_name),
     LINE,
-    `\uD83C\uDFDB سطح امپراتوری: ${fa(bLvl(st, "central"))}    \uD83D\uDD25 قدرت: ${num(st.p.power)}`,
-    RES_KEYS.slice(0, 3).map((k) => `${RES[k].emoji}${num(st.res[k])}`).join("  "),
-    RES_KEYS.slice(3).map((k) => `${RES[k].emoji}${num(st.res[k])}`).join("  "),
+    `🏛 سطح : ${bLvl(st, "central")}      🔥 قدرت : ${num(st.p.power)}`,
+    LINE,
+    RES_KEYS.slice(0, 3).map((k) => `${RES[k].emoji} ${num(st.res[k])}`).join("   "),
+    RES_KEYS.slice(3).map((k) => `${RES[k].emoji} ${num(st.res[k])}`).join("   "),
     LINE
   ];
-  lines.push(q ? `\uD83C\uDFD7 ${B[q.key].name} → سطح ${fa(q.to_level)} (${dur(q.finish_at - now)})` : "\uD83C\uDFD7 صف ساخت: خالی");
-  lines.push(r ? `\uD83D\uDD2C ${T[r.key].name} → سطح ${fa(r.to_level)} (${dur(r.finish_at - now)})` : "\uD83D\uDD2C صف تحقیق: خالی");
+  lines.push(q ? `🏗 ${B[q.key].name} ➜ ${q.to_level} (${dur(q.finish_at - now)})` : "🏗 صف ساخت : خالی");
+  lines.push(r ? `🔬 ${T[r.key].name} ➜ ${r.to_level} (${dur(r.finish_at - now)})` : "🔬 صف تحقیق : خالی");
   if (st.p.protected_until > now)
-    lines.push(`\uD83D\uDEE1 محافظت: ${dur(st.p.protected_until - now)} دیگر`);
-  return { text: lines.join(`
-`), kb: mainMenu(isAdmin) };
+    lines.push(`🛡 محافظت : ${dur(st.p.protected_until - now)}`);
+  return { text: lines.join("\n"), kb: mainMenu(isAdmin) };
 }
 async function rankOf(ctx, power) {
   const r = await ctx.db.prepare("SELECT COUNT(*) AS c FROM players WHERE banned = 0 AND power > ?").bind(power).first();
@@ -1550,61 +1578,156 @@ async function screenEmpire(ctx, st) {
   const built = Object.values(st.b).filter((v) => v > 0);
   const a = armyStats(st);
   const text = [
-    `\uD83C\uDFF0 ${st.p.empire_name}`,
+    H("وضعیت امپراتوری"),
+    `👑 ${st.p.empire_name}`,
     LINE,
-    `\uD83C\uDD94 شناسه بازیکن: ${st.p.id}`,
-    `\uD83C\uDFDB سطح امپراتوری: ${fa(bLvl(st, "central"))}`,
-    `\uD83D\uDD25 میزان قدرت: ${num(st.p.power)}`,
-    `\uD83C\uDFD7 تعداد ساختمان‌ها: ${fa(built.length)} (مجموع سطح‌ها: ${fa(built.reduce((s, v) => s + v, 0))})`,
-    `\uD83E\uDE96 تعداد نیروهای نظامی: ${num(a.totalUnits)}`,
-    `\uD83D\uDD2C مجموع سطح فناوری‌ها: ${fa(Object.values(st.t).reduce((s, v) => s + v, 0))}`,
-    `\uD83C\uDF0D رتبه جهانی: ${fa(rank)} از ${fa(total?.c ?? 0)}`,
-    `\uD83D\uDCC5 تاریخ عضویت: ${dateFa(st.p.created_at)}`,
-    st.p.protected_until > ctx.now ? `\uD83D\uDEE1 محافظت تازه‌وارد: ${dur(st.p.protected_until - ctx.now)} دیگر` : ""
-  ].filter((x) => x !== "").join(`
-`);
-  return { text, kb: [[btn("⚙️ تنظیمات", "st"), btn("\uD83C\uDFC6 رتبه‌بندی", "rk")], homeRow()] };
+    `🆔 شناسه : ${st.p.id}`,
+    `🏛 سطح مرکزی : ${bLvl(st, "central")}`,
+    `🔥 قدرت : ${num(st.p.power)}`,
+    `🏆 رتبه : ${rank} از ${total?.c ?? 0}`,
+    LINE,
+    `🏗 ساختمان‌ها : ${built.length} (مجموع سطح: ${built.reduce((s, v) => s + v, 0)})`,
+    `🪖 نیروها : ${num(a.totalUnits)}`,
+    `🔬 مجموع سطح فناوری : ${Object.values(st.t).reduce((s, v) => s + v, 0)}`,
+    LINE,
+    `📅 عضویت : ${dateFa(st.p.created_at)}`,
+    st.p.protected_until > ctx.now ? `🛡 محافظت : ${dur(st.p.protected_until - ctx.now)}` : ""
+  ].filter((x) => x !== "").join("\n");
+  return { text, kb: [[btn("🏆 رتبه‌بندی", "rk"), btn("⚙️ تنظیمات", "st")], navRow("g:emp")] };
 }
 async function screenRanking(ctx, st) {
   const rows = await ctx.db.prepare("SELECT id, empire_name, power FROM players WHERE banned = 0 ORDER BY power DESC, id ASC LIMIT 10").all();
-  const medals = ["\uD83E\uDD47", "\uD83E\uDD48", "\uD83E\uDD49"];
-  const lines = ["\uD83C\uDFC6 رتبه‌بندی جهانی", LINE];
+  const medals = ["🥇", "🥈", "🥉"];
+  const lines = [H("رتبه‌بندی جهانی"), LINE];
   rows.results.forEach((p, i) => {
-    lines.push(`${medals[i] || fa(i + 1) + "."} ${clip(p.empire_name, 22)} — \uD83D\uDD25 ${num(p.power)}${p.id === st.p.id ? " ← شما" : ""}`);
+    lines.push(`${medals[i] || (i + 1) + "."} ${clip(p.empire_name, 22)} ➜ 🔥 ${num(p.power)}${p.id === st.p.id ? "  ◀ شما" : ""}`);
   });
   const rank = await rankOf(ctx, st.p.power);
-  lines.push(LINE, `\uD83D\uDCCD رتبه شما: ${fa(rank)} — قدرت ${num(st.p.power)}`);
-  return { text: lines.join(`
-`), kb: [[btn("\uD83D\uDD04 به‌روزرسانی", "rk")], homeRow()] };
+  lines.push(LINE, `📍 رتبه شما : ${rank}   🔥 ${num(st.p.power)}`);
+  return { text: lines.join("\n"), kb: [[btn("🔄 به‌روزرسانی", "rk")], navRow("g:wd")] };
 }
 function screenSettings(st) {
   return {
-    text: ["⚙️ تنظیمات", LINE, `نام امپراتوری: ${st.p.empire_name}`, `اعلان‌ها (پایان ساخت و حمله‌ها): ${st.p.notify ? "روشن \uD83D\uDD14" : "خاموش \uD83D\uDD15"}`].join(`
-`),
+    text: [H("تنظیمات"), LINE, `👑 نام امپراتوری : ${st.p.empire_name}`, `🔔 اعلان‌ها : ${st.p.notify ? "روشن" : "خاموش"}`].join("\n"),
     kb: [
-      [btn("✏️ تغییر نام امپراتوری", "sr")],
-      [btn(st.p.notify ? "\uD83D\uDD15 خاموش‌کردن اعلان‌ها" : "\uD83D\uDD14 روشن‌کردن اعلان‌ها", "sn")],
-      [btn("\uD83D\uDCD6 راهنمای بازی", "hp")],
+      [btn("✏️ تغییر نام", "sr")],
+      [st.p.notify ? btn("🔕 خاموش‌کردن اعلان‌ها", "sn", "danger") : btn("🔔 روشن‌کردن اعلان‌ها", "sn", "success")],
+      [btn("📖 راهنمای بازی", "hp")],
       homeRow()
     ]
   };
 }
-function screenHelp() {
-  const text = [
-    "\uD83D\uDCD6 راهنمای EMPIRE WARS",
-    LINE,
-    "\uD83C\uDFD7 با طلا و آهن ساختمان بساز؛ منابع حتی وقتی آفلاینی تولید می‌شوند (تا سقف انبار).",
-    "\uD83C\uDFDB ساختمان مرکزی سقف سطح بقیه را تعیین می‌کند.",
-    "\uD83D\uDD29 کارخانه فولاد آهن را به فولاد تبدیل می‌کند؛ جنگنده و تانک فولاد می‌خواهند.",
-    "\uD83D\uDD2C با مرکز تحقیقات فناوری تولید کن و نسل‌های جدید تجهیزات را باز کن.",
-    "✈️\uD83D\uDE9C\uD83D\uDEE1 هر تجهیزات ساختمان، فناوری، منابع و ظرفیت خالی لازم دارد.",
-    "⚡ ارتش انرژی مصرف می‌کند؛ اگر انرژی تمام شود قدرتش کم می‌شود.",
-    "⚔️ از «جهان و بازیکنان» هدف انتخاب کن و حمله کن. بازنده فقط درصدی از منابع و بخشی از ارتش را از دست می‌دهد؛ ساختمان‌ها و فناوری هرگز از بین نمی‌روند.",
-    "\uD83D\uDEE1 تازه‌واردها چند ساعت محافظت دارند؛ با اولین حمله محافظت تمام می‌شود.",
-    "\uD83C\uDF81 هر روز از «منابع و اقتصاد» پاداش بگیر."
-  ].join(`
-`);
-  return { text, kb: [backRow("st"), homeRow()] };
+function screenHelp(page, cfg) {
+  cfg = cfg || DEFAULT_CFG;
+  const topics = [
+    ["start", "🚀 شروع بازی"],
+    ["res", "💰 منابع"],
+    ["bld", "🏗 ساختمان‌ها"],
+    ["army", "⚔️ ارتش"],
+    ["war", "🎯 نبرد"],
+    ["tech", "🔬 تحقیقات"],
+    ["sys", "⚙️ سیستم‌ها"],
+    ["icons", "🔣 آیکون‌ها"]
+  ];
+  if (!page || !topics.some((t) => t[0] === page)) {
+    return {
+      text: [H("راهنمای EMPIRE WARS"), LINE, "موضوع مورد نظر را انتخاب کن:"].join("\n"),
+      kb: [...chunk(topics.map(([k, l]) => btn(l, `hp:${k}`)), 2), homeRow()]
+    };
+  }
+  const hr = (h) => [H(h), LINE];
+  let lines;
+  if (page === "start") {
+    lines = [...hr("شروع بازی"),
+      "1. در «امپراتوری ← ساختمان‌ها» معدن، پالایشگاه، نیروگاه و انبار را ارتقا بده تا منابع بیشتری بگیری.",
+      "2. ساختمان مرکزی را بالا ببر؛ سقف سطح بقیه ساختمان‌ها و باز شدن ساختمان‌های جدید به آن بستگی دارد.",
+      "3. کارخانه فولاد و مرکز تحقیقات را بساز (نیاز به مرکزی سطح 2).",
+      "4. پادگان بساز و پیاده‌نظام بخر؛ بعد فرودگاه، کارخانه تانک‌سازی و مرکز پدافند.",
+      "5. هر روز پاداش روزانه را از «منابع و اقتصاد» بگیر.",
+      "6. وقتی ارتش داشتی، از «جهان ← بازیکنان و حمله» هدف انتخاب کن.",
+      LINE,
+      "هر ساختمان و هر تحقیق جداگانه صف دارد؛ هرکدام در هر لحظه یکی ساخته می‌شود."];
+  } else if (page === "res") {
+    lines = [...hr("منابع"),
+      ...RES_KEYS.map((k) => `${RES[k].emoji} ${RES[k].name} : ${RES[k].use}`),
+      LINE,
+      "منبع هرکدام:",
+      `💰 ساختمان مرکزی (پایه ${PROD.central.base} + ${PROD.central.per} در هر سطح، در ساعت)`,
+      `⛓ معدن آهن (${PROD.mine.per} در هر سطح)`,
+      `🛢 پالایشگاه (${PROD.refinery.per} در هر سطح)`,
+      `⚡ نیروگاه (پایه ${PROD.power.base} + ${PROD.power.per} در هر سطح)`,
+      `🔬 مرکز تحقیقات (${PROD.research.per} در هر سطح)`,
+      `🔩 کارخانه فولاد (آهن را تبدیل می‌کند: هر 1 فولاد = 2 آهن، تا ${STEEL_PER_LEVEL} فولاد در ساعت به ازای هر سطح)`,
+      LINE,
+      "منابع حتی وقتی آفلاینی تولید می‌شوند، اما تا سقف انبار."];
+  } else if (page === "bld") {
+    lines = [...hr("ساختمان‌ها"),
+      ...BUILDINGS.map((d) => `${d.emoji} ${d.name}${d.minCentral > 1 ? ` (مرکزی ${d.minCentral})` : ""}\n   ${d.desc}`),
+      LINE,
+      "ارتقا هزینه و زمان ساخت را بالا می‌برد ولی تولید، ظرفیت یا توان را بیشتر می‌کند. سقف سطح هر ساختمان = 2 × سطح ساختمان مرکزی (حداکثر 10)."];
+  } else if (page === "army") {
+    lines = [...hr("ارتش"),
+      "✈️ جنگنده : حمله و دفاع بالا، گران؛ فرودگاه و فولاد می‌خواهد.",
+      "🚜 تانک : دفاع بالا و حمله خوب؛ کارخانه تانک‌سازی و فولاد می‌خواهد.",
+      "🪖 پیاده‌نظام : ارزان و کم‌مصرف؛ پادگان می‌خواهد.",
+      "🛡 پدافند : فقط دفاع دارد (حمله ندارد)؛ مرکز پدافند می‌خواهد.",
+      "🚚 پشتیبانی : حمله و دفاع مستقیم ندارد، فقط بونوس می‌دهد:",
+      ...Object.values(SUPPORT_INFO).map((s) => `   ◆ ${s}`),
+      LINE,
+      "هر تجهیزات 5 نسل (پیاده‌نظام و پشتیبانی 3 نسل) دارد. نسل بالاتر قوی‌تر است و ساختمان با سطح بالاتر و فناوری مربوطه می‌خواهد."];
+  } else if (page === "war") {
+    lines = [...hr("نبرد"),
+      "شرایط حمله:",
+      "◆ حداقل یک واحد تهاجمی (جنگنده، تانک یا پیاده‌نظام)",
+      `◆ ${cfg.attack_energy} انرژی برای هر حمله`,
+      `◆ فاصله بین دو حمله : ${dur(cfg.attack_cooldown)}`,
+      `◆ قدرت هدف حداقل ${Math.round(cfg.min_target_ratio * 100)}% قدرت تو باشد`,
+      "◆ هدف تحت محافظت نباشد",
+      LINE,
+      "نتیجه: قدرت حمله تو با قدرت دفاع هدف (هر دو با ±10% شانس) مقایسه می‌شود.",
+      "◆ هر دو طرف مقداری از نیروهای رزمی را از دست می‌دهند؛ بازنده بیشتر. واحدهای پشتیبانی، ساختمان‌ها و فناوری هرگز از بین نمی‌روند.",
+      `◆ برنده ${Math.round(cfg.loot_pct * 100)}% از طلا، نفت، آهن و فولاد هدف را غنیمت می‌گیرد (تا سقف انبار خودش).`,
+      `◆ مدافعی که ببازد ${dur(cfg.shield_seconds)} محافظت می‌گیرد.`,
+      `◆ دفاع پایه هر امپراتوری = 40 + 25 × سطح مرکزی.`];
+  } else if (page === "tech") {
+    lines = [...hr("تحقیقات"),
+      "برای تحقیق به مرکز تحقیقات نیاز داری؛ سطح مرکز تحقیقات باید حداقل برابر سطح هدف باشد.",
+      "هزینه: فناوری + طلا. هزینه و زمان با هر سطح بیشتر می‌شود. حداکثر 5 سطح.",
+      LINE,
+      ...TECHS.map((t) => `${t.emoji} ${t.name}\n   ${t.desc}`)];
+  } else if (page === "sys") {
+    lines = [...hr("سیستم‌ها"),
+      "📦 ظرفیت",
+      `هر واحد چند اسلات از ساختمان خودش را اشغال می‌کند. اسلات هر سطح: فرودگاه ${CAP_PER_LEVEL.airfield}، پادگان ${CAP_PER_LEVEL.barracks}، تانک‌سازی ${CAP_PER_LEVEL.tankfactory}، پدافند ${CAP_PER_LEVEL.defense}. برای نیروی بیشتر ساختمان را ارتقا بده.`,
+      "",
+      "⚡ انرژی",
+      "نیروگاه انرژی تولید می‌کند و ارتش هر ساعت مصرف می‌کند. هر حمله هم انرژی می‌برد. اگر انرژی تمام شود، قدرت حمله 25% و دفاع 15% کم می‌شود.",
+      "",
+      "🏭 تولید و انبار",
+      "تولید ادامه دارد تا انبار پر شود. ظرفیت انبار = 4000 در سطح 1 و با هر سطح بیشتر می‌شود؛ فناوری لجستیک هم +10% در هر سطح اضافه می‌کند.",
+      "",
+      "🔥 قدرت بازیکن",
+      "جمع (حمله + دفاع) نیروها + 25 به ازای هر سطح ساختمان + 40 به ازای هر سطح فناوری. رتبه و هدف‌یابی بر اساس همین است.",
+      "",
+      "🛡 محافظت",
+      `تازه‌واردها ${Math.round(cfg.protect_hours)} ساعت قابل حمله نیستند. با اولین حمله خودت محافظت تمام می‌شود.`];
+  } else {
+    lines = [...hr("آیکون‌ها"),
+      ...RES_KEYS.map((k) => `${RES[k].emoji} ${RES[k].name}`),
+      LINE,
+      "🔥 قدرت حمله / قدرت کلی",
+      "🛡 دفاع / محافظت",
+      "📦 ظرفیت یا انبار",
+      "⚡ انرژی و نگهداری",
+      "⏳ ⏱ زمان",
+      "✅ شرط برقرار | 🔒 قفل | ❌ ناکافی",
+      "⚠️ هشدار",
+      "🏆 رتبه | 🎁 پاداش | ☠️ تلفات",
+      "🟢 دکمه سبز: خرید، ساخت، ارتقا، پاداش",
+      "🔵 دکمه آبی: مشاهده و منو",
+      "🔴 دکمه قرمز: حمله و کارهای خطرناک"];
+  }
+  return { text: lines.join("\n"), kb: [[btn("📖 فهرست راهنما", "hp")], homeRow()] };
 }
 async function screenWorld(ctx, st) {
   const p = st.p.power;
@@ -1614,18 +1737,17 @@ async function screenWorld(ctx, st) {
   if (rows.length < 3) {
     rows = (await ctx.db.prepare("SELECT id, empire_name, power, protected_until FROM players WHERE banned = 0 AND id != ? ORDER BY RANDOM() LIMIT 8").bind(st.p.id).all()).results;
   }
-  const lines = ["\uD83C\uDF0D جهان و بازیکنان", LINE, `\uD83D\uDD25 قدرت شما: ${num(p)}`, LINE];
+  const lines = [H("بازیکنان و حمله"), LINE, `🔥 قدرت شما : ${num(p)}`, LINE];
   const btns = [];
   if (!rows.length)
     lines.push("هنوز بازیکن دیگری پیدا نشد.");
   for (const r of rows) {
-    const prot = r.protected_until > ctx.now ? " \uD83D\uDEE1" : "";
-    lines.push(`• ${clip(r.empire_name, 22)} — \uD83D\uDD25 ${num(r.power)}${prot}`);
-    btns.push([btn(`${clip(r.empire_name, 18)} • \uD83D\uDD25${num(r.power)}${prot}`, `pf:${r.id}`)]);
+    const prot = r.protected_until > ctx.now ? " 🛡" : "";
+    lines.push(`◆ ${clip(r.empire_name, 22)} ➜ 🔥 ${num(r.power)}${prot}`);
+    btns.push([btn(`${clip(r.empire_name, 18)} • 🔥${num(r.power)}${prot}`, `pf:${r.id}`)]);
   }
-  lines.push(LINE, "\uD83D\uDEE1 = تحت محافظت (قابل حمله نیست)");
-  return { text: lines.join(`
-`), kb: [...btns, [btn("\uD83D\uDD04 جستجوی دیگر", "wd")], homeRow()] };
+  lines.push(LINE, "🛡 = تحت محافظت (قابل حمله نیست)");
+  return { text: lines.join("\n"), kb: [...btns, [btn("🔄 جستجوی دیگر", "wd")], navRow("g:wd")] };
 }
 async function screenPlayer(ctx, st, targetId) {
   const t = await ctx.db.prepare("SELECT p.id, p.empire_name, p.power, p.protected_until, p.banned, p.created_at, (SELECT level FROM buildings WHERE player_id = p.id AND key = 'central') AS central FROM players p WHERE p.id = ?").bind(targetId).first();
@@ -1633,20 +1755,19 @@ async function screenPlayer(ctx, st, targetId) {
     return { text: "❌ این بازیکن پیدا نشد.", kb: [backRow("wd")] };
   const rank = await rankOf(ctx, t.power);
   const lines = [
-    `\uD83C\uDFF0 ${t.empire_name}`,
+    H(t.empire_name),
     LINE,
-    `\uD83C\uDFDB سطح امپراتوری: ${fa(t.central || 1)}`,
-    `\uD83D\uDD25 قدرت: ${num(t.power)}`,
-    `\uD83C\uDF0D رتبه: ${fa(rank)}`,
-    `\uD83D\uDCC5 عضویت: ${dateFa(t.created_at)}`,
-    t.protected_until > ctx.now ? `\uD83D\uDEE1 تحت محافظت (${dur(t.protected_until - ctx.now)})` : "⚠️ بدون محافظت"
+    `🏛 سطح : ${t.central || 1}`,
+    `🔥 قدرت : ${num(t.power)}`,
+    `🏆 رتبه : ${rank}`,
+    `📅 عضویت : ${dateFa(t.created_at)}`,
+    t.protected_until > ctx.now ? `🛡 تحت محافظت (${dur(t.protected_until - ctx.now)})` : "⚠️ بدون محافظت"
   ];
   const kb = [];
   if (t.id !== st.p.id && t.protected_until <= ctx.now)
-    kb.push([btn("⚔️ حمله", `at:${t.id}`)]);
-  kb.push(backRow("wd"));
-  return { text: lines.join(`
-`), kb };
+    kb.push([btn("⚔️ حمله", `at:${t.id}`, "danger")]);
+  kb.push(navRow("wd"));
+  return { text: lines.join("\n"), kb };
 }
 async function setNotify(ctx, st) {
   st.p.notify = st.p.notify ? 0 : 1;
@@ -1656,7 +1777,7 @@ async function renameEmpire(ctx, st, raw) {
   const name = cleanName(raw);
   const n = nameLen(name);
   if (n < 3 || n > 24)
-    return { ok: false, msg: "❌ نام باید بین ۳ تا ۲۴ حرف باشد. دوباره بفرست (یا /menu برای لغو)." };
+    return { ok: false, msg: "❌ نام باید بین 3 تا 24 حرف باشد. دوباره بفرست (یا /menu برای لغو)." };
   if (/^\//.test(name))
     return { ok: false, msg: "❌ نام نمی‌تواند با / شروع شود." };
   st.p.empire_name = name;
@@ -1709,17 +1830,18 @@ async function onMessage(env, m) {
       st.p.state = null;
     }
     if (/^\/help/i.test(text))
-      return void await sendScreen(env, chatId, screenHelp());
+      return void await sendScreen(env, chatId, screenHelp(undefined, st.cfg));
     if (created) {
       await sendText(env, chatId, [
-        "⚔️ به EMPIRE WARS خوش آمدی!",
+        H("EMPIRE WARS"),
         LINE,
-        `امپراتوری «${st.p.empire_name}» برای تو ساخته شد.`,
-        `\uD83D\uDEE1 تا ${fa(Math.round(st.cfg.protect_hours))} ساعت تحت محافظت هستی.`,
-        "با ساخت معدن، پالایشگاه و نیروگاه شروع کن و کم‌کم ارتش بساز.",
-        "راهنما: /help"
-      ].join(`
-`));
+        `👑 امپراتوری «${st.p.empire_name}» ساخته شد.`,
+        `🛡 ${Math.round(st.cfg.protect_hours)} ساعت تحت محافظت هستی.`,
+        LINE,
+        "شروع: ◆ معدن، پالایشگاه و نیروگاه را ارتقا بده",
+        "◆ بعد پادگان بساز و ارتش جمع کن",
+        "📖 راهنما: /help"
+      ].join(`\n`));
     }
     st = await loadState(ctx, user.id) || st;
     return void await sendScreen(env, chatId, screenHome(st, adm, ctx.now));
@@ -1778,7 +1900,7 @@ async function onStateText(ctx, st, text, adm, chatId) {
       if (!isResKey(res))
         return void await clear();
       if (!Number.isFinite(amount) || amount <= 0 || amount > 1e9)
-        return void await sendText(env, chatId, "❌ یک عدد مثبت (حداکثر ۱ میلیارد) بفرست یا /menu.");
+        return void await sendText(env, chatId, "❌ یک عدد مثبت (حداکثر 1 میلیارد) بفرست یا /menu.");
       await clear();
       const msg = await adjustResource(ctx, st, id, res, sign, Math.floor(amount));
       await sendText(env, chatId, msg);
@@ -1866,13 +1988,15 @@ async function route(ctx, st, p, adm) {
     case "st":
       return { screen: screenSettings(st) };
     case "hp":
-      return { screen: screenHelp() };
+      return { screen: screenHelp(b, st.cfg) };
+    case "g":
+      return b === "emp" || b === "wd" ? { screen: screenHub(b, st, now) } : { screen: home() };
     case "sn":
       await setNotify(ctx, st);
       return { screen: screenSettings(st) };
     case "sr":
       await setState(ctx, st.p.id, "rename");
-      return { screen: promptScreen("✏️ نام جدید امپراتوری را بفرست (۳ تا ۲۴ حرف):") };
+      return { screen: promptScreen("✏️ نام جدید امپراتوری را بفرست (3 تا 24 حرف):") };
     case "bl":
       return { screen: screenBuildings(st, now) };
     case "bd":
@@ -2021,7 +2145,7 @@ var src_default = {
         const cols = await env.DB.prepare("PRAGMA table_info(players)").all();
         if (cols.results.length && !cols.results.some((c) => c.name === "last_tick")) {
           await env.DB.prepare("DROP TABLE players").run();
-          out.push("♻️ جدول آزمایشی مرحله ۱ پاک شد و با ساختار کامل ساخته می‌شود");
+          out.push("♻️ جدول آزمایشی مرحله 1 پاک شد و با ساختار کامل ساخته می‌شود");
         }
         await env.DB.batch(SCHEMA.map((s) => env.DB.prepare(s)));
         out.push("✅ دیتابیس آماده شد (جدول‌ها ساخته/بررسی شدند)");
